@@ -92,7 +92,6 @@ const handleNewNoteView = function () {
 };
 
 // If a note's title or text are empty, hide the save button
-// Or else show it
 const handleRenderSaveBtn = function () {
   if (!$noteTitle.val().trim() || !$noteText.val().trim()) {
     $saveNoteBtn.hide();
@@ -101,14 +100,12 @@ const handleRenderSaveBtn = function () {
   }
 };
 
-// Render's the list of note titles
 const renderNoteList = (notes) => {
   $noteList.empty();
 
   const noteListItems = [];
 
   // Returns jquery object for li with given text and delete button
-  // unless withDeleteButton argument is provided as false
   const create$li = (text, withDeleteButton = true) => {
     const $li = $("<li class='list-group-item'>");
     const $span = $("<span>").text(text);
@@ -147,6 +144,5 @@ $noteList.on("click", ".delete-note", handleNoteDelete);
 $noteTitle.on("keyup", handleRenderSaveBtn);
 $noteText.on("keyup", handleRenderSaveBtn);
 
-// Gets and renders the initial list of notes
 getAndRenderNotes();
 
